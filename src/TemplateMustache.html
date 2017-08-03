@@ -4,7 +4,7 @@
 </script>
 
 <script>
-  class TemplateMustache extend HTMLElement {
+  class TemplateMustache extends HTMLElement {
     constructor() {
       super();
 
@@ -12,8 +12,18 @@
       Mustache.parse(this.template);
     }
 
-    render(data = {}) {
-      this.inerHTML = Mustache.render(this.template, data);
+    /**
+     * render data to html
+     * @param  {Object}  [data={}] - The data should be render
+     * @param  {Boolean} [htmlonly=false] - Set innerHTML or not
+     * @return {String} - Rendered html
+     */
+    render(data = {}, htmlonly = false) {
+      const innerHTML = Mustache.render(this.template, data);
+      if (!htmlonly) {
+        this.innerHTML = innerHTML;
+      }
+      return innerHTML;
     }
   }
 
