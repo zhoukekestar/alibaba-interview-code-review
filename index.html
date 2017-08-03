@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="import" href="./src/TemplateMustache.html">
+    <link rel="import" href="./src/SimpleLetter.html">
+  </head>
+  <body>
+    <simple-letter id='letter' from='zhoukekestar' to='anonymous'>
+      <header>
+        <time datetime="2017-08-03 22:15">Aug 03</time>
+        <p>Dear {{to}} :</p>
+      </header>
+      <main>
+        <section>
+          <h3>WebComponents:</h3>
+          <p>
+            Web Components consists of these four technologies (although each can be used separately):
+            <ul>
+              <li>Custom Elements</li>
+              <li>HTML Templates</li>
+              <li>Shadow DOM</li>
+              <li>HTML Imports</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h3>Impossible!</h3>
+          <p>It can't run on IE!</p>
+          <h3>Possbiel!</h3>
+          <p>Something impossible now is possible in the future!</p>
+        </section>
+      </main>
+      <footer>Best, zhoukekestar</footer>
+    </simple-letter>
+
+    <script>
+      const letter = document.querySelector('#letter');
+      const tos = 'Alibaba,Future,WebComponents,W3C'.split(',');
+
+      setInterval(() => {
+        const index = Math.floor(Math.random() * 4);
+        letter.to = tos[index];
+      }, (0.5 + Math.random()) * 2e3)
+    </script>
+  </body>
+</html>
