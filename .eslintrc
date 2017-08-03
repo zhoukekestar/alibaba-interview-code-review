@@ -1,0 +1,11 @@
+{
+
+  "extends": "airbnb-base/legacy",
+  "plugins": ["html"],
+  "setting": {
+    "html/html-extensions": [".html"]
+  },
+  "rules": {
+    "func-names": ["warn", "as-needed"]
+  }
+}
