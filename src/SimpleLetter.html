@@ -1,0 +1,55 @@
+<style>
+  simple-letter {
+    width: 600px;
+    margin: 40px auto;
+    display: block;
+  }
+
+  simple-letter header > time {
+    float: right;
+  }
+
+  simple-letter footer {
+    text-align: right;
+  }
+</style>
+
+<script>
+  class SimpleLetter extends TemplateMustache {
+    constructor() {
+      super();
+
+      const from = this.from = this.getAttribute('from');
+      const to = this.to = this.getAttribute('to')
+
+      this.render();
+    }
+
+    get from() {
+      return this.getAttribute('from')
+    }
+
+    set from(v) {
+      this.setAttribute('from', v);
+      this.render();
+    }
+
+    get to() {
+      return this.getAttribute('to')
+    }
+
+    set to(v) {
+      this.setAttribute('to', v);
+      this.render();
+    }
+
+    render() {
+      TemplateMustache.prototype.render.call(this, {
+        from: this.from,
+        to: this.to,
+      });
+    }
+  }
+
+  customElements.define('simple-letter', SimpleLetter);
+</script>
