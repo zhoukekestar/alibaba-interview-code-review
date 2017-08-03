@@ -2,7 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>index</title>
+    <script>
+      // Check Browser compatitility.
+      !(function() {
+        var version = 0;
+        version = (version = navigator.userAgent.match(/Chrome\/(\d*)/)) && version[1];
+        version = +version || 0;
+
+        // Non-Chrome Browser
+        if (version === 0) {
+          alert('This page support Chrome only! Please try it in Chrome.');
+        // Chrome is too old to run it.
+        } else if (version < 54) {
+          alert('This page support Chrome 54+ only! But your version is ' + version + '.');
+        }
+      })();
+    </script>
     <link rel="import" href="./src/TemplateMustache.html">
     <link rel="import" href="./src/SimpleLetter.html">
   </head>
@@ -36,6 +52,16 @@
     </simple-letter>
 
     <script>
+      // !(() => {
+      //   let version = 0;
+      //   version = (version = navigator.userAgent.match(/Chrome\/(\d*)/)) && version[1];
+      //   version = +version;
+      //
+      //   if (version < 54) {
+      //     alert(`This page support Chrome 54+ only! But your version is ${version}.`);
+      //   }
+      // })();
+
       const letter = document.querySelector('#letter');
       const tos = 'Alibaba,Future,WebComponents,W3C'.split(',');
 

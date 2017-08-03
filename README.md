@@ -1,6 +1,8 @@
 # Review
 
-Latest Chrome Only! 这个样例不太现实，这是面向未来编程！Yeah ~~
+Chrome 54+ Only!
+
+> 这个样例不太现实，这是面向未来编程！Yeah ~~
 
 
 # References
