@@ -21,7 +21,13 @@
     render(data = {}, htmlonly = false) {
       const innerHTML = Mustache.render(this.template, data);
       if (!htmlonly) {
-        this.innerHTML = innerHTML;
+        const container = new SimpleLetter(true);
+        container.innerHTML = innerHTML;
+        Array.from(this.attributes).map(attr => {
+          container[attr.name] = attr.value;
+        });
+        morphdom(this, container);
+        // this.innerHTML = innerHTML;
       }
       return innerHTML;
     }
