@@ -9,6 +9,8 @@
       super();
 
       this.template = this.innerHTML.trim();
+
+      // Cache template
       Mustache.parse(this.template);
     }
 
@@ -19,16 +21,21 @@
      * @return {String} - Rendered html
      */
     render(data = {}, htmlonly = false) {
+      // Render template
       const innerHTML = Mustache.render(this.template, data);
+
       if (!htmlonly) {
+        // new rendered SimpleLetter
         const container = new SimpleLetter(true);
         container.innerHTML = innerHTML;
         Array.from(this.attributes).map(attr => {
           container[attr.name] = attr.value;
         });
+
+        // patch diff doms to real dom
         morphdom(this, container);
-        // this.innerHTML = innerHTML;
       }
+
       return innerHTML;
     }
   }

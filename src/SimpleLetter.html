@@ -24,8 +24,8 @@
       this.from = this.getAttribute('from');
       this.to = this.getAttribute('to');
 
-      this.renderedSymbol = Symbol();
-      this.webcomponentsSymbol = Symbol();
+      this._symbol_rendered = Symbol();
+      this._symbol_webcomponents = Symbol();
 
       this.rendered = rendered;
     }
@@ -37,12 +37,15 @@
       }
     }
 
+    /**
+     * rendered or not
+     */
     get rendered() {
-      return this[this.renderedSymbol];
+      return this[this._symbol_rendered];
     }
 
     set rendered(v) {
-      this[this.renderedSymbol] = v;
+      this[this._symbol_rendered] = v;
     }
 
     /**
@@ -73,20 +76,30 @@
       this.render();
     }
 
+    /**
+     * webcomponents list
+     */
     get webcomponents() {
-      return this[this.webcomponentsSymbol];
+      this.DEBUG && console.log('[SimpleLetter] get webcomponents()');
+      return this[this._symbol_webcomponents];
     }
 
     set webcomponents(v) {
-      this[this.webcomponentsSymbol] = v;
+      this.DEBUG && console.log(`[SimpleLetter] set webcomponents(${v})`);
+      this[this._symbol_webcomponents] = v;
       this.render();
     }
 
+    /**
+     * render template to html
+     */
     render() {
       this.DEBUG && console.log(`[SimpleLetter] rendered: ${this.rendered} connected: ${this.connected}`);
 
+      // connected & not rendered only
       if (!this.connected || this.rendered) return;
 
+      // call TemplateMustache call to render
       TemplateMustache.prototype.render.call(this, {
         from: this.from,
         to: this.to,
