@@ -147,6 +147,10 @@ letter.webcomponents[0] = webcomponents[0];
 
 喂！醒醒吧！别睡了，该写你的 `vue` 代码了！
 
+# 框架之外
+
+一篇受赵振宇老师启发的笔记：[框架之外](https://zhoukekestar.github.io/notes/2017/08/07/beyond-framework.html)
+
 # References
 
 * [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)
